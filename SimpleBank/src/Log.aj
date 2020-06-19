@@ -7,15 +7,17 @@ import java.util.Calendar;
 
 public aspect Log {
 	File file = new File("log.txt");
-	Calendar cal = Calendar.getInstance();
+	Calendar cal;
 	private BufferedWriter bw;
-	//Aspecto: Deben hacer los puntos de cortes (pointcut) para crear un log con los tipos de transacciones realizadas.
 	pointcut success() : call(* moneyMake*(..) );
 	after() : success() {
 			try {
+				cal = Calendar.getInstance();
 				bw = new BufferedWriter(new FileWriter(file,true));
 				PrintWriter escribir = new PrintWriter(bw);
-				escribir.println("Realizar Deposito Hora: " + cal.toString());
+				escribir.println("Realizar Deposito Hora: " + cal.get(Calendar.HOUR_OF_DAY) + "H:" +
+															cal.get(Calendar.MINUTE) + "M:" +
+															cal.get(Calendar.SECOND) + "S");
 				escribir.flush();
 				escribir.close();
 				bw.close();
@@ -31,9 +33,12 @@ public aspect Log {
 	pointcut succes() : call(* moneyWithdrawal*(..) );
 	after() : succes() {
 		try {
+			cal = Calendar.getInstance();
 			bw = new BufferedWriter(new FileWriter(file, true));
 			PrintWriter write = new PrintWriter(bw);
-			write.println("Realizar Retiro Hora: " + cal.toString());
+			write.println("Realizar Retiro Hora: " + cal.get(Calendar.HOUR_OF_DAY) + "H:" +
+													cal.get(Calendar.MINUTE) + "M:" +
+													cal.get(Calendar.SECOND) + "S");
 			write.flush();
 			write.close();
 			bw.close();
