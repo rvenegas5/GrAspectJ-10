@@ -1,5 +1,6 @@
 package com.bank;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Bank {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int opcion = 0;
         initBank();
         while(opcion != EXIT){
@@ -23,7 +24,7 @@ public class Bank {
         };
 
     }
-    public static int menu(){
+    public static int menu() throws IOException{
         System.out.println("Banco AspectJ");
         System.out.println("------------------------------------");
         System.out.println("1 - Crear usuario");
@@ -40,15 +41,20 @@ public class Bank {
             createUser();
         break;
         case 2:
-            System.out.println("Realizar transaccion");
-            System.out.println("------------------------------------");
-             moneyMakeTransaction(); 
+        	System.out.println("Realizar transaccion");
+    		System.out.println("------------------------------------");
+    		moneyMakeTransaction(); 
+            
         break;
+			
+           
         case 3:
             System.out.println("Retirar dinero");
             System.out.println("------------------------------------");
-             moneyWithdrawal();
-        break;
+            moneyWithdrawal();
+            
+             break;
+        
         case 4:
             System.out.println("Ver Usuarios");
             viewUsers();
