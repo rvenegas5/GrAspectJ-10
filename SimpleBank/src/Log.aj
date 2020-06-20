@@ -16,8 +16,8 @@ public aspect Log {
 				bw = new BufferedWriter(new FileWriter(file,true));
 				PrintWriter escribir = new PrintWriter(bw);
 				escribir.println("Realizar Deposito Hora: " + cal.get(Calendar.HOUR_OF_DAY) + "H:" +
-															cal.get(Calendar.MINUTE) + "M:" +
-															cal.get(Calendar.SECOND) + "S");
+									cal.get(Calendar.MINUTE) + "M:" +
+									cal.get(Calendar.SECOND) + "S");
 				escribir.flush();
 				escribir.close();
 				bw.close();
@@ -37,8 +37,8 @@ public aspect Log {
 			bw = new BufferedWriter(new FileWriter(file, true));
 			PrintWriter write = new PrintWriter(bw);
 			write.println("Realizar Retiro Hora: " + cal.get(Calendar.HOUR_OF_DAY) + "H:" +
-													cal.get(Calendar.MINUTE) + "M:" +
-													cal.get(Calendar.SECOND) + "S");
+								cal.get(Calendar.MINUTE) + "M:" +
+								cal.get(Calendar.SECOND) + "S");
 			write.flush();
 			write.close();
 			bw.close();
